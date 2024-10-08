@@ -210,10 +210,8 @@ Here are all of the available options and their defaults:
     // Styles to add only when touchSupport is true.
     touchStyles: { pointerEvents: 'none' },
     // Where to position the inner toggle relative to the
-    // input element. Can be 'right', 'left' or 'infer'. If
-    // 'infer', it will be based on the text-direction of the
-    // input element.
-    position: 'infer',
+    // input element. Can be 'right' or 'left'.
+    position: 'right',
     // Where to position the inner toggle on the y-axis
     // relative to the input element. Can be 'top', 'bottom'
     // or 'middle'.
@@ -255,7 +253,9 @@ Here are all of the available options and their defaults:
       'marginTop',
       'marginRight',
       'marginBottom',
-      'marginLeft'
+      'marginLeft',
+      'marginInlineStart',
+      'marginInlineEnd'
     ],
     // Styles for the input element when wrapped.
     innerElementStyles: {
