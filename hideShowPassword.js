@@ -14,14 +14,14 @@
 }(function ($, undef) {
 
   var dataKey = 'plugin_hideShowPassword',
-      shorthandArgs = ['show', 'innerToggle'],
-      SPACE = 32,
-      ENTER = 13;
+    shorthandArgs = ['show', 'innerToggle'],
+    SPACE = 32,
+    ENTER = 13;
 
   var canSetInputAttribute = (function(){
     var body = document.body,
-        input = document.createElement('input'),
-        result = true;
+      input = document.createElement('input'),
+      result = true;
     if (! body) {
       body = document.createElement('body');
     }
@@ -65,8 +65,8 @@
       this.options = this.prepareOptions(options, base);
       if (this.updateElement()) {
         this.element
-            .trigger(this.options.changeEvent, [ this ])
-            .trigger(this.state().changeEvent, [ this ]);
+          .trigger(this.options.changeEvent, [ this ])
+          .trigger(this.state().changeEvent, [ this ]);
       }
       return this.options.enable;
     },
@@ -78,8 +78,8 @@
 
     prepareOptions: function (options, base) {
       var original = options || {},
-          keyCodes = [],
-          testElement;
+        keyCodes = [],
+        testElement;
       base = base || this.options;
       options = $.extend(true, {}, base, options);
       // Ugly conditional to resolve #34 in a backwards-compatible way (for now)
@@ -122,9 +122,9 @@
     updateElement: function () {
       if (! this.options.enable || this.isType()) return false;
       this.element
-          .prop($.extend({}, this.options.props, this.state().props))
-          .addClass(this.state().className)
-          .removeClass(this.otherState().className);
+        .prop($.extend({}, this.options.props, this.state().props))
+        .addClass(this.state().className)
+        .removeClass(this.otherState().className);
       if (this.options.triggerOnToggle) {
         this.element.trigger(this.options.triggerOnToggle, [ this ]);
       }
@@ -161,14 +161,14 @@
 
     wrapElement: function (options) {
       var enforceWidth = options.enforceWidth,
-          targetWidth;
+        targetWidth;
       if (! this.wrapperElement.length) {
         targetWidth = this.element.outerWidth();
         $.each(options.inheritStyles, $.proxy(function (index, prop) {
           options.styles[prop] = this.element.css(prop);
         }, this));
         this.element.css(options.innerElementStyles).wrap(
-            $(options.element).addClass(options.className).css(options.styles)
+          $(options.element).addClass(options.className).css(options.styles)
         );
         this.wrapperElement = this.element.parent();
         if (enforceWidth === true) {
@@ -185,10 +185,10 @@
       if (! this.toggleElement.length) {
         // Create element
         this.toggleElement = $(options.element)
-            .attr(options.attr)
-            .addClass(options.className)
-            .css(options.styles)
-            .appendTo(this.wrapperElement);
+          .attr(options.attr)
+          .addClass(options.className)
+          .css(options.styles)
+          .appendTo(this.wrapperElement);
         // Update content/attributes
         this.updateToggle();
         // Position
@@ -225,16 +225,16 @@
 
     updateToggle: function (state, otherState) {
       var paddingProp,
-          targetPadding;
+        targetPadding;
       if (this.toggleElement.length) {
         paddingProp = 'padding-' + (this.options.toggle.position === 'left' ? 'inline-start' : 'inline-end');
         state = state || this.state().toggle;
         otherState = otherState || this.otherState().toggle;
         this.toggleElement
-            .attr(state.attr)
-            .addClass(state.className)
-            .removeClass(otherState.className)
-            .html(state.content);
+          .attr(state.attr)
+          .addClass(state.className)
+          .removeClass(otherState.className)
+          .html(state.content);
         targetPadding = this.toggleElement.outerWidth() + (this.options.toggle.offset * 2);
         if (this.element.css(paddingProp) !== targetPadding) {
           this.element.css(paddingProp, targetPadding);
@@ -259,9 +259,9 @@
 
     toggleTouchEvent: function (event) {
       var toggleX = this.toggleElement.offset().left,
-          eventX,
-          lesser,
-          greater;
+        eventX,
+        lesser,
+        greater;
       if (toggleX) {
         eventX = event.pageX || event.originalEvent.pageX;
         if (this.options.toggle.position === 'left') {
@@ -295,7 +295,7 @@
     });
     return this.each(function(){
       var $this = $(this),
-          data = $this.data(dataKey);
+        data = $this.data(dataKey);
       if (data) {
         data.update(options);
       } else {
